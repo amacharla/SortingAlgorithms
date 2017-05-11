@@ -2,10 +2,10 @@
 #include <time.h>
 #include <stdio.h>
 /**
- *Main - Entry point
+ *main - Entry point
  *lastn - to get the last digit of n
  *if else statement to print based on creteria
- *Return: with 0 (success)
+ *Return: Always 0 (Success)
 */
 int main(void)
 {
