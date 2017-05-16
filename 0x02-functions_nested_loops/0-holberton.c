@@ -1,8 +1,8 @@
 #include "holberton.h"
 /**
- *main - Entry point
- *calls _putchar function
- *return "Holberton" 0
+ * main - Entry point
+ * calls _putchar function to print "Holberton"
+ * Return: Always 0.
  */
 int main(void)
 {
