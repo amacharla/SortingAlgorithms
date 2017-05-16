@@ -6,10 +6,19 @@
  */
 int print_last_digit(int n)
 {
-	int lastn = (n % 10);
+	char lastn;
+	char lastn2;
 
 	if (n >= 0)
+	{
+		lastn = (n % 10) + 48;
+		_putchar(lastn);
 		return (lastn);
+	}
 	else
-		return (lastn * -1);
+	{	lastn = ((n % 10) * -1) + 48;
+		_putchar(lastn);
+		lastn2 = (n % 10) * -1;
+		return (lastn2);
+	}
 }
