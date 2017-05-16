@@ -1,10 +1,16 @@
 #include "holberton.h"
-/*
- * This returns last digit of a number
+/**
+ * main - check the code for Holberton School students.
+ * print_last_digit and takes in parameter int 'n'
+ * computes last digit via %
+ * Return: Always 0.
  */
 int print_last_digit(int n)
 {
 	int lastn = (n % 10);
 
-	return lastn;
+	if (n >= 0)
+		return (lastn);
+	else
+		return (lastn * -1);
 }

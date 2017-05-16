@@ -1,13 +1,13 @@
 #include "holberton.h"
 /**
  * main - check the code for Holberton School students.
- * returns absolute value
+ * absolute value funcition _abs takes int a anr returns abs
  * Return: Always 0.
  */
-int _abs(int abs)
+int _abs(int a)
 {
-	if (abs < 0)
-		return (-abs);
+	if (a < 0)
+		return (a * -1);
 	else
-		return (abs);
+		return (a);
 }
