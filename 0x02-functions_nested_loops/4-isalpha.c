@@ -1,10 +1,8 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
- * returns '1' if alphabets
- * else 0
- * uses _putchar funciton
- * Return: Always 0.
+ * _isalpha - returns 1 if c is part of the alphabet.
+ * @c: first opperand type int
+ * Return: 1 if alphabet else 0.
  */
 int _isalpha(int c)
 {

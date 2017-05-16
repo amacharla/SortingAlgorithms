@@ -1,8 +1,6 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
- * Function prints a-z using costom command
- * Return: Always 0.
+ * print_alphabet - prints aplhabet
  */
 void print_alphabet(void)
 {

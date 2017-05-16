@@ -1,9 +1,8 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
- * prints sign of the number
- * uses _putchar funciton
- * Return: Always 0.
+ * print_sign - tells if the number n is positive or negative
+ * @n: number type int
+ * Return: 1 if positive, 0 if 0, -1 if negative
  */
 int print_sign(int n)
 {

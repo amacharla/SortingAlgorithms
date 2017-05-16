@@ -1,9 +1,8 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
- * print_last_digit and takes in parameter int 'n'
- * computes last digit via %
- * Return: Always 0.
+ * print_last_digit - returns last digit only
+ * @n: takes number of type int
+ * Return: lastn (postive value)
  */
 int print_last_digit(int n)
 {
