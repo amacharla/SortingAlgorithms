@@ -1,7 +1,9 @@
 #include "holberton.h"
-/*
- * Function prints a-z using costom command
- *
+/**
+ * main - check the code for Holberton School students.
+ * prints alphabets x10
+ * uses _putchar funciton
+ * Return: Always 0.
  */
 void print_alphabet_x10(void)
 {

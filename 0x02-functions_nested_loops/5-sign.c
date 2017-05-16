@@ -1,9 +1,9 @@
 #include "holberton.h"
-/*
- * This function will return
- * 1 if n > 0
- * 0 if n=0
- * -1 is n < 0
+/**
+ * main - check the code for Holberton School students.
+ * prints sign of the number
+ * uses _putchar funciton
+ * Return: Always 0.
  */
 int print_sign(int n)
 {

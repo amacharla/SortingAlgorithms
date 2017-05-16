@@ -1,7 +1,10 @@
 #include "holberton.h"
-/*
- * This function will check if its lowercase then return 1
- * if its uppercase it will return 0
+/**
+ * main - check the code for Holberton School students.
+ * prints '1' if lowercase alphabets
+ * else 0
+ * uses _putchar funciton
+ * Return: Always 0.
  */
 int _islower(int c)
 {

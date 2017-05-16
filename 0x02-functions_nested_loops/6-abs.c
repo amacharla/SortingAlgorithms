@@ -1,6 +1,8 @@
 #include "holberton.h"
-/*
- * This function will find the absoutle value
+/**
+ * main - check the code for Holberton School students.
+ * returns absolute value
+ * Return: Always 0.
  */
 int _abs(int abs)
 {
