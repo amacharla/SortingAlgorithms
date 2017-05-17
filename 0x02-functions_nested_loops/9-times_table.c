@@ -16,11 +16,11 @@ void times_table(void)
 			if ((times / 10) != 0)
 				_putchar((times / 10) + '0');
 			else
-				_putchar(' ');
+				_putchar('x');
 			_putchar((times % 10) + '0');
 			if (b != 9)
 				_putchar(',');
-				_putchar(' ');
+				_putchar('z');
 		}
 		_putchar('\n');
 	}
