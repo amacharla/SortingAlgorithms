@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
  * main - sums of multiples of natural numbers < 1024
+ * Return: 0 success
  */
 int main(void)
 {
