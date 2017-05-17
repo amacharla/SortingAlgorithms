@@ -6,21 +6,33 @@
  */
 void times_table(void)
 {
-	int a, b, times;
+	int c, r, num, tens, ones;
 
-	for (a = 0; a < 10 ; a++)
+	for (r = 0; r < 10; r++)
 	{
-		for (b = 0; b < 10; b++)
+		for (c = 0; c < 10 ; c++)
 		{
-			times = a * b;
-			if ((times / 10) != 0)
-				_putchar((times / 10) + '0');
-			else
-				_putchar('x');
-			_putchar((times % 10) + '0');
-			if (b != 9)
+			num = r * c;
+			tens = num / 10;
+			ones = num % 10;
+
+			if (c == 0) /*Print the first coloum*/
+				_putchar('0');
+			else if (tens == 0) /*print only single digits*/
+			{
+				_putchar(' ');
+				_putchar(ones + '0');
+			}
+			else /*print everything else*/
+			{
+				_putchar(tens + '0');
+				_putchar(ones + '0');
+			}
+			if (c != 9)
+			{
 				_putchar(',');
-				_putchar('z');
+				_putchar(' ');
+			}
 		}
 		_putchar('\n');
 	}
