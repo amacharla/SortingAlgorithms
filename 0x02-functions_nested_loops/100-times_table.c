@@ -1,18 +1,18 @@
 #include "holberton.h"
 /**
  * print_times_table - prints the multiplicaiton times table
- * @max: takes in the what times table user wants, type int
+ * @n: takes in the what times table user wants, type int
  * Prints only digts and uses _putchar function
  */
-void print_times_table(int max)
+void print_times_table(int n)
 {
 	int c, r, num, tens;
 
-	if (!(max > 0 && max < 15))
+	if (!(n > 0 && n < 15))
 		return;
-	for (r = 0; r <= max; r++)
+	for (r = 0; r <= n; r++)
 	{
-		for (c = 0; c <= max ; c++)
+		for (c = 0; c <= n ; c++)
 		{
 			num = r * c;
 			tens = num / 10;
@@ -39,7 +39,7 @@ void print_times_table(int max)
 				_putchar(tens + '0');
 				_putchar((num % 10) + '0');
 			}
-			if (c != max)
+			if (c != n)
 			{
 				_putchar(',');
 				_putchar(' ');
