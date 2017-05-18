@@ -22,8 +22,12 @@ int main(void)
 			p0 = p1;
 			p1 = num;
 		}
-		printf("%li, ", num);
+		printf("%li", num);
+		if (i != 50)
+		{
+			printf(", ");
+		}
 	}
-	putchar('\n');
+	printf("\n");
 	return (0);
 }
