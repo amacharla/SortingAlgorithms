@@ -8,13 +8,13 @@
 int main(void)
 {
 	int i;
-	unsigned long num; /* number */ 
-	unsigned long p0 = 0; /* first previous number */
-	unsigned long p1 = 1; /* second previous number */
+	unsigned long num;/* number */
+	unsigned long p0 = 1; /* first previous number */
+	unsigned long p1 = 2; /* second previous number */
 
-	for (i = 0; i <= 50; i++)
+	for (i = 1; i <= 50; i++)
 	{
-		if (i <= 1)
+		if (i <= 2)
 			num = i;
 		else
 		{
