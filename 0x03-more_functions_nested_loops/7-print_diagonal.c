@@ -1,8 +1,9 @@
 #include "holberton.h"
 /**
- * print_diagonal - prints 'n' numbers of \
- * @n: determins how many lines to print
+ * print_diagonal - prints 'n' numbers of \ followed by newline
+ * @n: determins how many lines to print type int
  * prints diagonally with right amount of spaces
+ * Return: void
  */
 void print_diagonal(int n)
 {
