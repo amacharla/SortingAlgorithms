@@ -1,8 +1,7 @@
 #include "holberton.h"
 /**
- * print_square - prints 'n' numbers of \
- * @n: determins how many lines to print
- * prints diagonally with right amount of spaces
+ * print_square - prints 'n' numbers of #
+ * @size: determins how many squares to print
  */
 void print_square(int size)
 {
