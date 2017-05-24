@@ -1,6 +1,10 @@
 #include "holberton.h"
 #include <stdio.h>
-
+/**
+  * _atoi - turns string into interger
+  *@s: char array pointer
+  *Return: num which is only intergers
+  */
 int _atoi(char *s)
 {
 	int i, j, num;
