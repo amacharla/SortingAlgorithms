@@ -10,7 +10,8 @@ void rev_string(char *s)
 	char a, b;
 	int size, half;
 
-	for (i = 0; s[i] != '\0'; i++) {}
+	for (i = 0; s[i] != '\0'; i++)
+	{}
 	size = (i - 1);
 	half = size / 2;
 	for (j = size; j >= half; j--)
