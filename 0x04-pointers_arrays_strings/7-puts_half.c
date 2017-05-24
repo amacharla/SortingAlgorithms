@@ -5,17 +5,12 @@
  */
 void puts_half(char *str)
 {
-	int i, j;
-	int size, half;
+	int i, j, half;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{}
-	size = (i - 1);
-	if (size % 2 == 0)
-		half = size / 2;
-	else
-		half = (size + 2) / 2;
-	for (j = half; j <= size; j++)
+	half = (i / 2);
+	for (j = i - half; j <= i; j++)
 		_putchar(str[j]);
 	_putchar('\n');
 }
