@@ -3,6 +3,7 @@
  * rev_string - reverses a string
  * @s: takes in array type char
  * saves the output to the same string
+ * used SIZE - HALF to get round up value of the half
  */
 void rev_string(char *s)
 {
@@ -12,9 +13,9 @@ void rev_string(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{}
-	size = (i - 1);
+	size = i - 1;
 	half = size / 2;
-	for (j = size; j >= half; j--)
+	for (j = size; j >= (size - half); j--)
 	{ /* swaping last with first until it reaches middle */
 		a = s[j]; /* 8 element to a*/
 		b = s[size - j]; /* 0 element to b*/
