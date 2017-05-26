@@ -8,9 +8,9 @@ void reverse_array(int *a, int n)
 {
 	int i, c, b;
 
-	n--;
+	n--; /*so i dont get the null character*/
 	for (i = 0; i < n; n--, i++)
-	{
+	{/*incrementing i while decrementing n*/
 		b = a[i];
 		c = a[n];
 		a[n] = b;
