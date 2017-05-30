@@ -1,4 +1,9 @@
-
+/**
+  * _strchr - function that locates a character in a string
+  * @s: string being looked at
+  * @c: character thats being matched
+  * Return: result - first occurrance of matched char
+  */
 char *_strchr(char *s, char c)
 {
 	int h;
