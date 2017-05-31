@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * print_chessboard - prints the chessboard
- * @(a)[8] - pointer to a multidimentional char array
+ * @a: pointer to a multidimentional char array
  */
 void print_chessboard(char (*a)[8])
 {
