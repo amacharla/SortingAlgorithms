@@ -1,4 +1,10 @@
-
+/**
+ * _strstr - function that locates the substring
+ * @haystack: string thats being searched
+ * @needle: string to look for
+ * Andrew B has helped me understand this problem.
+ * Return: address of the begenning of the string
+ */
 char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
@@ -10,9 +16,9 @@ char *_strstr(char *haystack, char *needle)
 		{
 			if (haystack[i + j] != needle[j])
 				break;
-			if (haystack[i + j] == '\0')
-				result = (haystack + i);
 		}
+		if (haystack[i + j] == '\0')
+			result = (haystack + i);
 	}
 	return (result);
 }
