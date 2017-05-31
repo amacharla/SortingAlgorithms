@@ -2,18 +2,17 @@
 char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
-	char *catch;
+	char *result;
 
 	for (i = 0; haystack[i]; i++)
 	{
 		for (j = 0; needle[j]; j++)
 		{
-			if (haystack[i] == needle[j])
-			{
-				catch = _strstr((haystack + i), needle);
-					
-			}
+			if (haystack[i + j] != needle[j])
+				break;
+			if (haystack[i + j] == '\0')
+				result = (haystack + i);
 		}
 	}
-	return (catch);
+	return (result);
 }
