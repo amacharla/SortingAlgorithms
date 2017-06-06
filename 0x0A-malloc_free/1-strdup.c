@@ -11,6 +11,10 @@ char *_strdup(char *str)
 {
 	char *a;
 	int i, j;
+
+	if (str == NULL)
+		return (NULL);
+
 	/* length of str */
 	for (i = 0; str[i]; i++)
 		;
@@ -19,7 +23,7 @@ char *_strdup(char *str)
 	a = malloc(i * sizeof(char));
 
 	/*checks if memory is allocated and if str is null*/
-	if (a == NULL || str == NULL)
+	if (a == NULL)
 		return (NULL);
 
 	/*coping string*/
