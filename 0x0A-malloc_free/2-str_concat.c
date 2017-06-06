@@ -10,8 +10,6 @@ char *str_concat(char *s1, char *s2)
 	unsigned int i, j;
 	char *concat;
 
-	if (s2 == NULL)
-		return (s1);
 	/* i = size of s2*/
 	for (i = 0; s2[i]; i++)
 		;
@@ -28,6 +26,13 @@ char *str_concat(char *s1, char *s2)
 	/* adds s1 then s2 to concat*/
 	for (i = 0; s1[i]; i++)
 		concat[i] = s1[i];
+
+	if (s2 == NULL)
+	{
+		concat[i] = '\0';
+		return (concat);
+	}
+
 	for (j = 0; s2[j]; j++, i++)
 		concat[i] = s2[j];
 	concat[i] = '\0';
