@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv)
 {
-	int i, a, remainder, total = 0;
+	int i, a, total = 0;
 
 	if (argc <= 1)
 	{
@@ -16,30 +16,26 @@ int main(int argc, char **argv)
 		a = atoi(argv[i]);
 		if (a % 25 == 0)
 		{	total += a / 25;
-			remainder = a % 25;
-			if (remainder == 0)
-			{	
-				puts("total");
-				return (0);
-			}
+			a = a % 25;
 		}
-		if (a % 10 == 0 || remainder % 10 == 0)
+		if (a % 10 == 0)
 		{
 			total += a / 10;
-			remainder = a % 10;
-			if (remainder == 0)
-			{
-				puts("total");
-				return (0);
-			}
+			a = a % 10;
 		}
-		/*if (a % 5 == 0 || total % 5 == 0)
-			total += a / 10;
-		if (a % 2 == 0 || total % 2 == 0)
-			total += a / 10;
-		if (a % 1 == 0 || total % 1 == 0)
-			total += a / 1;*/
+		if (a % 5 == 0)
+		{
+			total += a / 5;
+			a = a % 5;
+		}
+		if (a % 2 == 0)
+		{
+			total += a / 2;
+			a = a % 2;
+		}
+
 	}
-	puts("total");
+	total = total + a;
+	printf("%d\n", total);
 	return (0);
 }
