@@ -18,8 +18,8 @@ char *_strdup(char *str)
 	/*allocating memory for a*/
 	a = malloc(i * sizeof(char));
 
-	/*checks if memory is allocated*/
-	if (a == NULL)
+	/*checks if memory is allocated and if str is null*/
+	if (a == NULL || str == NULL)
 		return (NULL);
 
 	/*coping string*/
