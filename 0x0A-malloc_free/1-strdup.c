@@ -17,6 +17,10 @@ char *_strdup(char *str)
 	/*allocating memory for a*/
 	a = malloc(i * sizeof(char));
 
+	/*checks if memory is allocated*/
+	if (a == 0)
+		return(0);
+
 	/*coping string*/
 	for (j = 0; j < i; j++)
 		a[j] = str[j];
