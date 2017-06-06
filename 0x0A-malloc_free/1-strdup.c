@@ -19,7 +19,7 @@ char *_strdup(char *str)
 
 	/*checks if memory is allocated*/
 	if (a == 0)
-		return(0);
+		return (0);
 
 	/*coping string*/
 	for (j = 0; j < i; j++)
