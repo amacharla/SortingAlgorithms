@@ -19,7 +19,7 @@ char *str_concat(char *s1, char *s2)
 	i += j + 1; /*s2 size + null character + s1 size*/
 
 	/* expand space of s1 to make space for s2 */
-	concat = malloc(i * sizeof(char));
+	concat = (char *) malloc(i * sizeof(char));
 	if (concat == NULL)
 		return (NULL);
 
