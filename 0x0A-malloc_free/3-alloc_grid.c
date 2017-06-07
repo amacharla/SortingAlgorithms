@@ -22,7 +22,16 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 /*fill each pointer space with space in form of 0 height amount of times*/
 	for (i = 0; i < width; i++)
+	{
 		a[i] = malloc(height * sizeof(int));
+		if (a[i] == NULL)
+		{
+			for (j = i; j >= 0; j--)
+				free(a[j]);
+			free(a);
+			return (NULL);
+		}
+	}
 	for (i = 0; i < width; i++)
 	{
 		for (j = 0; j < height; j++)
