@@ -12,7 +12,7 @@ int **alloc_grid(int width, int height)
 {	/*width = collumns | height = rows*/
 
 	int **a; /*pointer to hold pointers*/
-	int i;
+	int i, j;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
@@ -22,7 +22,12 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 /*fill each pointer space with space in form of 0 height amount of times*/
 	for (i = 0; i < width; i++)
-		a[i] = calloc(height, sizeof(int));
+		a[i] = malloc(height * sizeof(int));
+	for (i = 0; i < width; i++)
+	{
+		for (j = 0; j < height; j++)
+			a[i][j] = 0;
+	}
 	return (a);
 
 }
