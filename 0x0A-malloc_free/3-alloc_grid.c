@@ -19,7 +19,10 @@ int **alloc_grid(int width, int height)
 	/*save pointer space * width amount of size*/
 	a = malloc(width * sizeof(int *));
 	if (a == NULL)
+	{
+		free(a);
 		return (NULL);
+	}
 /*fill each pointer space with space in form of 0 height amount of times*/
 	for (i = 0; i < width; i++)
 	{
