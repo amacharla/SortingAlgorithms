@@ -1,6 +1,6 @@
 #include <stdlib.h>
 /**
- * calloc - allocates memory for an array,
+ * _calloc - allocates memory for an array,
  * using malloc and initilizes it with zeros
  * @nmemb: number of elements
  * @size: type of variable
