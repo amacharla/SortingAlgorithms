@@ -13,9 +13,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	/*casting the void ptr to become char * so i can do pointer arithmetic*/
 	char *oldptr = ptr;
 	char *newptr;
-	unsigned int i;
+	unsigned int i, size = old_size;
+
+	if (old_size > new_size)
+		size = new_size;
+
 	/*dont new to reallocate space cause size is same*/
-	if (new_size == old_size)
+	if (new_size == size)
 		return (ptr);
 	/*creating new memory*/
 	if (ptr == NULL)
@@ -30,13 +34,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	}
 	/*expanding memory*/
-	if (new_size > old_size)
+	if (new_size > size)
 	{
 		newptr = malloc(new_size);
 		if (newptr == NULL)
 			return (NULL);
 		/*transfer old content into new*/
-		for (i = 0; i < old_size; i++)
+		for (i = 0; i < size; i++)
 			newptr[i] = oldptr[i];
 		free(ptr);
 	}
