@@ -1,42 +1,41 @@
 #include <stdlib.h>
 /**
- * argstostr - concatenates all the arguments of my program
- * @ac: argument count
- * @av: argument array
- * Return: pointer to string
- */
+  *argstostr - concatenates all the arguments of your program.
+  *@ac: argument count
+  *@av: arguments
+  *Return: char ptr string or NULL if malloc fails or ac or av is 0
+  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, k = 0;
-	char *b;
-	int size = 0;
+	char *string;
+	int i, j;
+	int k = 0;/*index through string char pointer*/
+	int s = 0;/*count all the characters in arguments*/
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
+
+	/*count all the chars in arguments*/
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; av[i][j]; j++)
-			size++;
-		size++;
+		for (j = 0; av[i][j]; j++, s++)
+			;
+		s++;
 	}
-	size++;
+	s++;
 
-	b = malloc(size * sizeof(char));
-	if (b == NULL)
+	string = malloc(s * sizeof(char));
+	if (string == NULL)
 		return (NULL);
 
+	/*add all charcters from args into char ptr array*/
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; av[i][j]; j++)
-		{
-			b[k] = av[i][j];
-			k++;
-		}
-		b[k] = '\n';
+		for (j = 0; av[i][j]; j++, k++)
+			string[k] = av[i][j];
+		string[k] = '\n';
 		k++;
 	}
-	b[k] = '\0';
-
-	return (b);
-
+	string[k] = '\0';
+	return (string);
 }
