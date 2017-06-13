@@ -26,17 +26,17 @@ dog_t *new_dog(char *name, float age, char *owner)
 	newdog = malloc(sizeof(dog_t));
 	if (newdog == NULL)
 		return (NULL);
-	/*allocating space in name segment to fit name*/
+	/*allocating space in name & owner segment to fit name and owner*/
 	newdog->name = malloc(i * sizeof(char));
 	if (newdog->name == NULL)
 	{
 		free(newdog);
 		return (NULL);
 	}
-	/*allocating space in owner segment to fit owner*/
 	newdog->owner = malloc(j * sizeof(char));
 	if (newdog->owner == NULL)
 	{
+		free(newdog->name);
 		free(newdog);
 		return (NULL);
 	}
