@@ -14,6 +14,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	unsigned int i, j, k;
 	dog_t *newdog;
 
+	if (name == NULL || owner == NULL)
+		return (NULL);
 	/*counting length of name & owner*/
 	for (i = 0; name[i]; i++)
 		;
