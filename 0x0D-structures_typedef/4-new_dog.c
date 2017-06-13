@@ -16,14 +16,12 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	if (name == NULL || owner == NULL)
 		return (NULL);
-	/*counting length of name & owner*/
 	for (i = 0; name[i]; i++)
 		;
 	i++;
 	for (j = 0; owner[j]; j++)
 		;
 	j++;
-
 	/*allocating space for structure*/
 	newdog = malloc(sizeof(dog_t));
 	if (newdog == NULL)
@@ -42,14 +40,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(newdog);
 		return (NULL);
 	}
-
 	/*coping name & owner from into struct newdog name segment*/
 	for (k = 0; k < i; k++)
 		newdog->name[k] = name[k];
 	newdog->age = age; /* didnt need to save age */
 	for (k = 0; k < j; k++)
 		newdog->owner[k] = owner[k];
-
-	/*returning structure with new name, age, and owner*/
 	return (newdog);
 }
