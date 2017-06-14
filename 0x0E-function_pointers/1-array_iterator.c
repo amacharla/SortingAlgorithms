@@ -4,7 +4,7 @@
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	unsigned int i;
+	size_t i;
 
 	if (array && action && size != 0)
 	{
