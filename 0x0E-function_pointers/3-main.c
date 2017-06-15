@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	/*must have 3 arguments*/
 	if (argc < 4)
 	{
-		puts("Error");
+		puts("Error argcv");
 		exit(98);
 	}
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	/*prevents undefined computation*/
 	if ((argv[2][0] == '/' || argv[2][0] == '%') && num2 == 0)
 	{
-		puts("Error");
+		puts("Error by 0");
 		exit(99);
 	}
 	/*sends symbol of operator > gets pointer to right function for computation*/
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	/*if func returns null then symbol doesn match arithmetic operator*/
 	if (func == NULL)
 	{
-		puts("Error");
+		puts("Error no match");
 		exit(100);
 	}
 	/*func replactes respectice calc based of symbol given to func from line 29*/
