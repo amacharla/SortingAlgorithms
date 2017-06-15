@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	if ((argv[2][0] == '/' || argv[2][0] == '%') && num2 == 0)
 	{
 		puts("Error");
-		exit(99);
+		exit(100);
 	}
 	/*sends symbol of operator > gets pointer to right function for computation*/
 	func = get_op_func(argv[2]);
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	if (func == NULL)
 	{
 		puts("Error");
-		exit(100);
+		exit(99);
 	}
 	/*func replactes respectice calc based of symbol given to func from line 29*/
 	result = func(num1, num2);
