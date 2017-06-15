@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	int num1, num2, result;
 	int (*func)(int, int);/*hold pointer to function with 2 int args*/
 	/*must have 3 arguments*/
-	if (argc < 4)
+	if (argc != 4)
 	{
 		puts("Error argcv");
 		exit(98);
