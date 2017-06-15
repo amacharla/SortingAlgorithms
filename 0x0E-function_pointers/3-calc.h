@@ -1,5 +1,5 @@
-#ifndef _3_calc_h_
-#define _3_calc_h_
+#ifndef _3_CALC_H_
+#define _3_CALC_H_
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -22,4 +22,4 @@ int op_mul(int a, int b);
 int op_div(int a, int b);
 int op_mod(int a, int b);
 int (*get_op_func(char *s))(int, int);
-#endif /* _3_calc_h_ */
+#endif /* _3_CALC_H_ */
