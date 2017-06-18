@@ -47,7 +47,7 @@ int print_string(char *seperator, va_list list)
 	{	printf("%s%s", seperator, nullcheck);
 		return (0);
 	}
-	printf("(nil)");
+	printf("%s(nil)", seperator);
 	return (1);
 }
 /**
