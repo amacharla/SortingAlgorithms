@@ -1,11 +1,59 @@
 #include "variadic_functions.h"
 #include <stdio.h>
+/**
+  * print_char - prints characters
+  * @seperator:, " "
+  * @list: va list
+  * Return: 0 success
+  */
+int print_char(char *seperator, va_list list)
+{
+	printf("%s%c", seperator, va_arg(list, int));
+	return (0);
+}
+/**
+  * print_int - prints ints
+  * @seperator: ," "
+  * @list: va list
+  * Return: 0 success
+  */
+int print_int(char *seperator, va_list list)
+{
+	printf("%s%i", seperator, va_arg(list, int));
+	return (0);
+}
+/**
+  * print_float - prints float
+  * @seperator: ," "
+  * @list: va list
+  * Return: 0 success
+  */
+int print_float(char *seperator, va_list list)
+{
+	printf("%s%f", seperator, va_arg(list, double));
+	return (0);
+}
+/**
+  * print_string - prints string
+  * @seperator: ," "
+  * @list: va list
+  * Return: 0 success
+  */
+int print_string(char *seperator, va_list list)
+{
+	char *nullcheck = va_arg(list, char*);
 
-void print_char ();
-void print_int ();
-void print_float ();
-void print_string ();
-
+	if (nullcheck)
+	{	printf("%s%s", seperator, nullcheck);
+		return (0);
+	}
+	printf("(nil)");
+	return (1);
+}
+/**
+ * print_all - prints all
+ * @format: output modifiers
+ */
 void print_all(const char * const format, ...)
 {
 	get_func function[] = {
@@ -17,6 +65,7 @@ void print_all(const char * const format, ...)
 	};
 	int i = 0;
 	int j = 0;
+	char *seperator = "";
 	va_list list;
 
 	va_start(list, format);
@@ -26,36 +75,15 @@ void print_all(const char * const format, ...)
 		while (function[j].type)
 		{
 			if (function[j].type == format[i])
-				function[j].printer(list);
+			{
+				function[j].printer(seperator, list);
+				seperator = ", ";
+			}
 			j++;
-				
 		}
 		j = 0;
 		i++;
-		if (format[i + 1] == '\0')
-			break;
-		printf(", ");
 	}
 	printf("\n");
 	va_end(list);
-}
-
-void print_char(va_list list)
-{
-	printf("%c", va_arg(list, int));
-}
-
-void print_int(va_list list)
-{
-	printf("%i", va_arg(list, int));
-}
-
-void print_float(va_list list)
-{
-	printf("%f", va_arg(list, double));
-}
-
-void print_string(va_list list)
-{
-	printf("%s", va_arg(list, char *));
 }

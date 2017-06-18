@@ -2,10 +2,15 @@
 #define _VARIADIC_FUNCTIONS_H
 #include <stdlib.h>
 #include <stdarg.h>
-
-typedef struct get_function {
+/**
+  *struct get_function - to hold values to find the function based on type
+  *@type:type to print
+  *@printer: function pointer taking in any input and outs int
+  */
+typedef struct get_function
+{
 	char type;
-	void (*printer)();
+	int (*printer)();
 } get_func;
 
 int _putchar(char);
