@@ -23,12 +23,12 @@ list_t *add_node(list_t **head, const char *str)
 	*head = new;
 
 	new->str = strdup(str); /*duplicating string*/
-	if (new->str == NULL)
-	{
-		free(new);
-		return (NULL);
-	}
-	/*gets length of stirng*/
+	
+	
+	
+	
+	
+	
 	for (i = 0; str[i]; i++)
 		;
 	new->len = i;
