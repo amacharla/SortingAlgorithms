@@ -1,26 +1,36 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
-
 /**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
- */
-int main(void)
+  * add_nodeint - adds new node at the beginning of a listint_t list
+  * @head: pointer to a pointer head to manipulate and make new the first node
+  * @n: data for the new node
+  * Return: address of new node
+  */
+listint_t *add_nodeint(const int n)
 {
-    listint_t *head;
+	listint_t *new = malloc(sizeof(listint_t));
 
-    head = NULL;
-    add_nodeint_end(&head, 0);
-    add_nodeint_end(&head, 1);
-    add_nodeint_end(&head, 2);
-    add_nodeint_end(&head, 3);
-    add_nodeint_end(&head, 4);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 402);
-    add_nodeint_end(&head, 1024);
-    print_listint(head);
-    return (0);
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = NULL;/*make new.next same as first node*/
+
+	return (new);
+}
+
+listint_t *add_nodeint_end(listint_t **head, const int n)
+{
+	listint_t *tail, *new;
+
+	tail = *head;
+	new = add_nodeint(n);
+
+	if (*head == NULL)
+		*head = new;
+	else
+	{
+		while (tail->next != NULL)
+			tail = tail->next;
+		tail->next = new;
+	}
+	return (new);
 }
