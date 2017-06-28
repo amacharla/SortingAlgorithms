@@ -23,7 +23,7 @@ listint_t *new_node(int n)
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	unsigned int i;
-	char trigger = 0;/*ony used if index is 0*/
+	char trigger = 0;/*becomes 1 if index is 0*/
 	listint_t *new, *nextptr, *headptr = *head;
 
 	if (head == NULL)
@@ -38,12 +38,10 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		headptr = headptr->next;
 
 	new = new_node(n);/*create new node with data*/
-
-	if (new == NULL || headptr == NULL)
+			/*if *head is null and index > 0*/
+	if (new == NULL || (headptr == NULL && trigger != 1))
 		return (NULL);
 
-	/*save next node ptr or NULL if last*/
-	nextptr = headptr->next ? headptr->next : NULL;
 	if (trigger == 1) /*if index is 0*/
 	{
 		*head = new;/*become first node*/
@@ -51,6 +49,8 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 	else /*if index is not 0*/
 	{
+		/*save next node ptr or NULL if last*/
+		nextptr = headptr->next ? headptr->next : NULL;
 		headptr->next = new;/*make prev node .next to point to new node*/
 		new->next = nextptr;/*have new node point to saved next node*/
 	}

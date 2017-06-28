@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "lists.h"
-#define INDEX 9
+#define INDEX 8
 /**
  * main - check the code for Holberton School students.
  *
