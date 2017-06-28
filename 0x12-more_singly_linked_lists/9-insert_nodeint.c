@@ -26,6 +26,9 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	char trigger = 0;/*ony used if index is 0*/
 	listint_t *new, *nextptr, *headptr = *head;
 
+	if (head == NULL)
+		return (NULL);
+
 	if (idx > 0)
 		idx -= 1;/*to get the previous node when running loop*/
 	else
