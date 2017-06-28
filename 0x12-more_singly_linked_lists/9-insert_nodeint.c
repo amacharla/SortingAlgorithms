@@ -33,7 +33,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 
 	if (new == NULL || headptr == NULL)
 		return (NULL);
-	nextptr = headptr->next;/*save next node ptr*/
+	nextptr = headptr->next ? headptr->next : NULL;/*save next node ptr*/
 	headptr->next = new;/*make prev node .next to point to new node*/
 	new->next = nextptr;/*have new node point to saved next node*/
 
