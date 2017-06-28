@@ -14,7 +14,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		return (-1);
 	if (index == 0)
 	{
-		*head = (*head)->next ? (*head)->next : NULL;
+		*head = (*head)->next
 		free(prevptr);
 		return (1);
 	}
@@ -25,7 +25,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	if (prevptr == NULL)
 		return (-1);
 	current = prevptr->next;/*go to target node*/
-	nextptr = current->next ? current->next : NULL;/*save target nodes .next ptr*/
+	nextptr = current->next;/*save target nodes .next ptr*/
 	free(current);/*free target node*/
 	prevptr->next = nextptr;/*set prev node to node after target ptr*/
 	return (1);
