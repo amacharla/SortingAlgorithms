@@ -23,7 +23,7 @@ listint_t *new_node(int n)
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	unsigned int i;
-	char trigger;/*ony used if index is 0*/
+	char trigger = 0;/*ony used if index is 0*/
 	listint_t *new, *nextptr, *headptr = *head;
 
 	if (idx > 0)
