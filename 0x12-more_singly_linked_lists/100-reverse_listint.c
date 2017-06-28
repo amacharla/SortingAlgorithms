@@ -12,6 +12,7 @@ listint_t *reverse_listint(listint_t **head)
 		return (NULL);
 	if ((*head)->next == NULL)
 		return (*head);/*no list exist*/
+
 	while (*head)
 	{
 		next = (*head)->next;/*saves next node*/
