@@ -2,6 +2,7 @@
 /**
  * reverse_listint - reverses a listint_t linked list.
  * @head: pointer to a pointer of original head.
+ * Had help from Alexa and Minas
  * Return: pointer to first node of reversed list.
  */
 listint_t *reverse_listint(listint_t **head)
