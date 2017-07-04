@@ -7,7 +7,7 @@
 size_t list_len(const list_t *h)
 {
 	size_t i = 0;
-
+	/* goes through the list untill node h points to null*/
 	while (h)
 	{
 		h = h->next;
