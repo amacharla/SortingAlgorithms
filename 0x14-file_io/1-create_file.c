@@ -34,7 +34,7 @@ int create_file(const char *filename, char *text_content)
 	if (file == -1)
 		return (-1);
 
-	check = write(file, text_content, _strlen(text_content))
+	check = write(file, text_content, _strlen(text_content));
 	if (check == -1)
 	{
 		close(file);
@@ -42,5 +42,4 @@ int create_file(const char *filename, char *text_content)
 	}
 	close(file);
 	return (1);
-
 }
