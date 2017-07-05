@@ -25,15 +25,18 @@ int create_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
+	/*if text_content is null create empty file*/
 	if (text_content == NULL)
 	{
 		text_content = "";
 	}
 
+	/*create or Truncate and set privilates to rw for owner*/
 	file = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0600);
 	if (file == -1)
 		return (-1);
 
+	/*write to file, the content , content length*/
 	check = write(file, text_content, _strlen(text_content));
 	if (check == -1)
 	{
