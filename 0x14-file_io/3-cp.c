@@ -15,7 +15,8 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	errorCheck = cp(argv[1], argv[2]);
+	if (argv[1] && argv[2])
+		errorCheck = cp(argv[1], argv[2]);
 	switch (errorCheck)
 	{
 	case 98:
@@ -37,43 +38,42 @@ int main(int argc, char **argv)
  */
 int cp(char *copy, char *paste)
 {
-	int fdC, fdP, count, check, check2;
+	int fd, fdC, fdP, count, check, check2;
 	char buffer[size];
 
 	fdC = open(copy, O_RDONLY);
 	fdP = open(paste, O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (fdC == -1 || fdP == -1)
 		return (98);
-
 	count = read(fdC, buffer, size);
 	if (count == -1)
 	{
-		check = close(fdC);
-		check2 = close(fdP);
-		if (check || check2 == -1)
-		{	dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
+		check = close(fdC); check2 = close(fdP);
+		if (check == -1 || check2 == -1)
+		{
+			fd = check == -1 ? fdC : fdP;
+			dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
 			exit(100);
 		}
 		return (99);
 	}
-
-	if (copy)
-		check = write(fdP, buffer, count);
+	check = write(fdP, buffer, count);
 	if (check == -1)
 	{
-		check = close(fdC);
-		check2 = close(fdP);
-		if (check || check2 == -1)
-		{	dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
+		check = close(fdC); check2 = close(fdP);
+		if (check == -1 || check2 == -1)
+		{
+			fd = check == -1 ? fdC : fdP;
+			dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fd);
 			exit(100);
 		}
 		return (99);
 	}
-
-	check = close(fdC);
-	check2 = close(fdP);
-	if (check || check2 == -1)
-	{	dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
+	check = close(fdC); check2 = close(fdP);
+	if (check == -1 || check2 == -1)
+	{
+		fd = check == -1 ? fdC : fdP;
+		dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 	return (0);
