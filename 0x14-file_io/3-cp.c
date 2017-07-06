@@ -1,5 +1,5 @@
 #include "holberton.h"
-#define size 1204
+#define size 1024
 /**
  * main - entry point and error handling
  * @argc: argument count
