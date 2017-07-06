@@ -44,31 +44,18 @@ int cp(char *copy, char *paste)
 	fdC = open(copy, O_RDONLY);
 	fdP = open(paste, O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (fdC == -1 || fdP == -1)
-		return (98);
+		return (fdC == -1 ? 98 : 99);
+
 	do {
 	count = read(fdC, buffer, size);
 	if (count == -1)
-	{
-		check = close(fdC), check2 = close(fdP);
-		if (check == -1 || check2 == -1)
-		{
-			fd = check == -1 ? fdC : fdP;
-			dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC), exit(100);
-		}
-		return (99);
-	}
+		return (98);
+
 	check = write(fdP, buffer, count);
 	if (check == -1)
-	{
-		check = close(fdC), check2 = close(fdP);
-		if (check == -1 || check2 == -1)
-		{
-			fd = check == -1 ? fdC : fdP;
-			dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fd), exit(100);
-		}
 		return (99);
-	}
 	} while (count);
+
 	check = close(fdC), check2 = close(fdP);
 	if (check == -1 || check2 == -1)
 	{
