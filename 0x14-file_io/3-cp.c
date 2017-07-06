@@ -1,53 +1,80 @@
 #include "holberton.h"
-
-int main(argc, **argv)
+#define size 1204
+/**
+ * main - entry point and error handling
+ * @argc: argument count
+ * @argv: arguments after command being executed
+ * Return: 0 Success else exit with error code and message
+ */
+int main(int argc, char **argv)
 {
-	int result, fdCopied, fdPasted;
-	
-	if (ac != 3)
+	int errorCheck;
+
+	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	
-	errorCheck = cp(av[1], av[2]);
-
-	switch(errorCheck) {
-		case 98 :
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		case 99 :
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		case 100 :
-			dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdCopied);
-			exit(100);
-		default:
-			return (0);
+	errorCheck = cp(argv[1], argv[2]);
+	switch (errorCheck)
+	{
+	case 98:
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	case 99:
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	default:
+		return (0);
 	}
+	return (0);
 }
-
+/**
+ * cp - function that copies the content of a file to another file
+ * @copy: first argument (file name) to copy from
+ * @paste: second argument (creates files and copies content)
+ * Return: 0- success |98, 99 -read and write fails|exits if cant close fd
+ */
 int cp(char *copy, char *paste)
 {
-	int fdC, fdP, check;
+	int fdC, fdP, count, check, check2;
+	char buffer[size];
 
 	fdC = open(copy, O_RDONLY);
-	fdP = open(paste, O_CREAT | O_TRUNC | O_WRONLY, 0667);
+	fdP = open(paste, O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (fdC == -1 || fdP == -1)
 		return (98);
 
-	size = _strlen(copy
-		
-	if (copy)
-		check = write(fdP, fdC, _strlen(copy));
-	if (check == -1)
+	count = read(fdC, buffer, size);
+	if (count == -1)
 	{
-		check = close(copy);
-		if (check == -1)
-			return (100);
+		check = close(fdC);
+		check2 = close(fdP);
+		if (check || check2 == -1)
+		{	dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
+			exit(100);
+		}
 		return (99);
 	}
 
+	if (copy)
+		check = write(fdP, buffer, count);
+	if (check == -1)
+	{
+		check = close(fdC);
+		check2 = close(fdP);
+		if (check || check2 == -1)
+		{	dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
+			exit(100);
+		}
+		return (99);
+	}
 
-
+	check = close(fdC);
+	check2 = close(fdP);
+	if (check || check2 == -1)
+	{	dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", fdC);
+		exit(100);
+	}
+	return (0);
 }
