@@ -1,5 +1,5 @@
 #include "holberton.h"
-#define size 1024
+#define size 1204
 /**
  * main - entry point and error handling
  * @argc: argument count
@@ -46,7 +46,7 @@ int cp(char *copy, char *paste)
 	if (fdC == -1 || fdP == -1)
 		return (fdC == -1 ? 98 : 99);
 
-	do {
+	do {/*read multiple times if more content then given size*/
 	count = read(fdC, buffer, size);
 	if (count == -1)
 		return (98);
@@ -54,7 +54,7 @@ int cp(char *copy, char *paste)
 	check = write(fdP, buffer, count);
 	if (check == -1)
 		return (99);
-	} while (count);
+	} while (count); /*untill count becomes 0*/
 
 	check = close(fdC), check2 = close(fdP);
 	if (check == -1 || check2 == -1)
