@@ -50,8 +50,8 @@ int cp(char *copy, char *paste)
 	count = read(fdC, buffer, size);
 	if (count == -1)
 		return (98);
-
-	check = write(fdP, buffer, count);
+	if (count != 0)
+		check = write(fdP, buffer, count);
 	if (check == -1)
 		return (99);
 	} while (count); /*untill count becomes 0*/
