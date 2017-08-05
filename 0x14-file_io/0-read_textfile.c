@@ -24,7 +24,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == NULL)
 		return (0);
 
-	/*store @letter amout of bytes in @buffer from opened @file*/
+	/*store @letter amount of bytes in @buffer from opened @file*/
 	readcount = read(file, buffer, letters);
 	if (readcount <= 0) /*number of bytes stored in @buffer*/
 	{

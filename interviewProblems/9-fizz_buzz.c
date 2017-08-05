@@ -2,9 +2,9 @@
 
 int main(void)
 {
-	int i;
+	unsigned int i;
 
-	for (i = 1; i <= 100; i++)
+	for(i = 1; i <= 100; i++)
 	{
 		if (i % 15 == 0)
 			printf("FizzBuzz");
@@ -14,10 +14,9 @@ int main(void)
 			printf("Buzz");
 		else
 			printf("%d", i);
-		if (i < 100)
+		if (i != 100)
 			printf(" ");
-
 	}
-	putchar(10);
+	printf("\n");
 	return (0);
 }
