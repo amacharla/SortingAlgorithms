@@ -16,17 +16,17 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 		return (NULL);
 
 	new->n = n;
-	new->next = NULL;/*make current node last*/
-	if (current == NULL)
+	new->next = NULL;/*make new node tail*/
+	if (current == NULL)/*if this is the first node on the list*/
 	{
-		*head = new;/*USE THIS INSTEAD OF CURRENT*/
-		new->prev = NULL;
+		*head = new;/*USE THIS INSTEAD OF CURRENT = new*/
+		new->prev = NULL;/*because its first node*/
 		return (new);
 	}
-	/* Get to the last node */
+	/* if not first node then Get to tail node */
 	for (; current->next != NULL; current = current->next)
 		;
-	new->prev = current;/*set last node to currents prev*/
-	current->next = new;/*have old last node next point last node*/
+	new->prev = current;/*set the @prev of tail node*/
+	current->next = new;/*have old last node's @next point to tail*/
 	return (new);
 }
