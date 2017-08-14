@@ -34,11 +34,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (idx == 0)/*inserting in the begenning*/
 	{
 		new->prev = NULL;
-		if (current == NULL) /*empty list*/
-			current = new;
+		if (*h == NULL) /*empty list*/
+			*h = new;
 		else
-			current->prev = new;
-		new->next = current;
+			(*h)->prev = new;
+		new->next = *h;
 	}
 	for (i = 0; i < idx - 1; i++)/*transvers and stop before idx*/
 	{
