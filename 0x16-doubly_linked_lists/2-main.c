@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "lists.h"
+#include "monty.h"
 
 /**
  * main - check the code for Holberton School students.
@@ -10,17 +11,17 @@
  */
 int main(void)
 {
-    dlistint_t *head;
+	stack_t *node = NULL;
+	dlist_t *list;
 
-    head = NULL;
-    add_dnodeint(&head, 0);
-    add_dnodeint(&head, 1);
-    add_dnodeint(&head, 2);
-    add_dnodeint(&head, 3);
-    add_dnodeint(&head, 4);
-    add_dnodeint(&head, 98);
-    add_dnodeint(&head, 402);
-    add_dnodeint(&head, 1024);
-    print_dlistint(head);
-    return (EXIT_SUCCESS);
+	list = malloc(sizeof(dlist_t));
+
+	dlist_int(list);
+	dlist_ins_next(list, node, 0);
+	dlist_ins_next(list, node, 1;
+	dlist_ins_next(list, node, 2);
+	dlist_ins_next(list, node, 3);
+	print_dlistint(head);
+
+	return (EXIT_SUCCESS);
 }
