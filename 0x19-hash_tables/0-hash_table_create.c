@@ -11,16 +11,21 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	if (size)
 	{
+		/* make hash table */
 		new_table = malloc(sizeof(hash_table_t));
 		if (new_table == NULL)
 			return (NULL);
 
-		new_table->size = size;
+		new_table->size = size; /*set size of hashtable*/
+		/*alloc memory for slots to hold pointer in array*/
 		new_table->array = malloc(sizeof(hash_node_t) * size);
 		if (new_table->array == NULL)
+		{
+			free(new_table);
 			return (NULL);
+		}
 
-		for (i = 0; i < size; i++) /*initilize array with NULL*/
+		for (i = 0; i < size; i++) /*initilize array slots with NULL*/
 			new_table->array[i] = NULL;
 	}
 	return (new_table);
