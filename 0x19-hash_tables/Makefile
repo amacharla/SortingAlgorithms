@@ -5,7 +5,7 @@
 	gcc -Wall -pedantic -Werror -Wextra 0-main.c 0-hash_table_create.c -o a
 0r: 0
 	./a
-ov: 0
+0v: 0
 	valgrind ./a
 
 1:
