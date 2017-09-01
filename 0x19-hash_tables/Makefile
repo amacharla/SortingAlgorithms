@@ -17,7 +17,12 @@ ov: 0
 	gcc -Wall -pedantic -Werror -Wextra 2-main.c 1-djb2.c 2-key_index.c -o c
 2r: 2
 	./c
-
+3:
+	gcc -Wall -pedantic -Werror -Wextra 3-main.c 0-hash_table_create.c 1-djb2.c 2-key_index.c 3-hash_table_set.c -o d
+3r: 3
+	./d
+3v: 3
+	valgrinde ./d
 4:
 	gcc -Wall -pedantic -Werror -Wextra 4-main.c 0-hash_table_create.c 1-djb2.c 2-key_index.c 3-hash_table_set.c 4-hash_table_get.c -o e
 4r: 4

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 /**
  * struct hash_node_s - Node of a hash table
  *
@@ -44,4 +45,4 @@ void hash_table_delete(hash_table_t *ht);
 
 
 
-#else /*__HASH_TABLE_H_*/
+#endif /*__HASH_TABLE_H_*/
