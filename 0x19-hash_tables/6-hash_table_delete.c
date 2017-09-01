@@ -1,5 +1,8 @@
 #include "hash_tables.h"
-
+/**
+ * hash_table_delete - function that deletes a hash table.
+ * @ht: structure that holds Hash array and size of hash array
+ */
 void hash_table_delete(hash_table_t *ht)
 {
 	hash_node_t *next_bucket;
@@ -10,7 +13,7 @@ void hash_table_delete(hash_table_t *ht)
 		return;
 	for (i = 0; i < ht->size; i++) /* free all indexs */
 	{	/* if collison exist or hash node exist */
-		for(; ht->array[i]; ht->array[i] = next_bucket)
+		for (; ht->array[i]; ht->array[i] = next_bucket)
 		{
 			next_bucket = ht->array[i]->next;
 			free(ht->array[i]->key);

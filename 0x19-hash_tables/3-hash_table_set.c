@@ -1,5 +1,11 @@
 #include "hash_tables.h"
-
+/**
+ * hash_table_set - function that adds an element to the hash table.
+ * @ht: structure that holds Hash array and size of hash array
+ * @key: (string) key
+ * @value: value associated with key
+ * Return: 0 if failed else 1 on success
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
