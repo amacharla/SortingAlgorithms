@@ -24,8 +24,8 @@ hash_table_t *hash_table_create(unsigned long int size)
 			free(new_table);
 			return (NULL);
 		}
-
-		for (i = 0; i < size; i++) /*initilize array slots with NULL*/
+		/* initilize slots with NULL so i know if its empty or not */
+		for (i = 0; i < size; i++)
 			new_table->array[i] = NULL;
 	}
 	return (new_table);

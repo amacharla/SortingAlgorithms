@@ -12,6 +12,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *bucket, *node;
 	char *dkey, *dvalue;
 
+	/* arguments checks */
 	if (key == NULL || ht == NULL || ht->size == 0 || ht->array == NULL
 			|| strlen(key) == 0 || value == NULL)
 		return (0);
