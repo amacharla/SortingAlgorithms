@@ -1,6 +1,24 @@
 #include "sort.h"
 
 /**
+ * insert_node - Insert swap_node after targer_node
+ * @target_node: pointer to target node in doubly linked list
+ * @swap_node: pointer to node to be moved before the current node
+ **/
+void insert_node(listint_s *target_node, listint_s *swap_node)
+{
+
+	extract_node(swap_node);
+
+	nodeswap->next = target->next;
+	nodeswap->prev = target;
+	target->next = nodeswap;
+
+	if (node_swap->next)
+		nodeswap->next->prev = node_swap;
+}
+
+/**
  * insert_head - inserts new head at head of list ALSO, extract new_head from
  *				 previous location
  * @list: double pointer to head of doubly-linked list
