@@ -58,13 +58,25 @@ void insert_node(listint_t *target_node, listint_t *swap_node)
 }
 
 /**
+ *
+ * 
+ **/
+void swap_back(listint_t *node)
+{
+	/* we already know that prev node exists */
+	node->prev->next = node->next;
+	node->next->prev = node->prev;
+	node->next = node->prev;
+	node->prev = node->prev->prev;
+}
+/**
  * insertion_sort_list - sorts a doubly linked list of integers
  * in ascending order using INSERTION SORT
  * @list: double pointer to doubly linked list of integers
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *past_node, *node_swap, *current = *list;
+	listint_t *node_swap, *current = *list;
 
 	if (list == NULL || *list == NULL)
 		exit (EXIT_FAILURE);
@@ -75,16 +87,13 @@ void insertion_sort_list(listint_t **list)
 		if (current->n > current->next->n)
 		{
 			node_swap = current->next; /*node being swapped*/
-			past_node = current->prev; /*prev node to be compared*/
-			for (; past_node; past_node = past_node->prev)
-			{ /*check all prevs nodes number */
-				if (past_node->n < node_swap->n)
-				{ /* insert at node at sorted location */
-					insert_node(past_node, node_swap);
-					break;
-				}
+			do {
+				swap_back(node_swap);
+				print_list(*list);
 			}
-			if (past_node == NULL) /* if being swapped with head */
+			while(node_swap->prev && node_swap->n < node_swap->prev->n);
+			
+		if (node_swap->prev == NULL) /* if being swapped with head */
 				insert_head(list, node_swap);
 
 			print_list(*list);
