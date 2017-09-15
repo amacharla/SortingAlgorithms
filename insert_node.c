@@ -41,6 +41,6 @@ void extract_node(listint_s **node)
 		(*node)->next->prev = (*node)->prev;
 	if ((*node)->prev != NULL)
 		(*node)->prev->next = (*node)->next;
-    (*node)->next = NULL;
-    (*node)->prev = NULL;
+	(*node)->next = NULL;
+	(*node)->prev = NULL;
 }
