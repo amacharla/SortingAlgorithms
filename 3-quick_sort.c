@@ -1,5 +1,5 @@
 #include "sort.h"
-
+// Test 2
 void quick_sort(int *array, size_t size)
 {
 	unsigned int i, j;
@@ -25,7 +25,7 @@ void quick_sort(int *array, size_t size)
 				break;
 		}
 
-		for (j = size - 2; j > 0; j--)
+		for (j = size - 2; j >= 0; j--)
 		{
 			right = array[j];
 			if (right < pivot || right == left)
