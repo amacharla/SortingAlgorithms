@@ -1,48 +1,82 @@
 #include "sort.h"
 
+/**
+ * quick_sort - helper function for recursive implementation of QuickSort using
+ *              Lomuto partition scheme
+ * @array: array of integers
+ * @size: size of array
+ **/
 void quick_sort(int *array, size_t size)
 {
-	unsigned int i, j;
-	int pivot, left, right, tmp;
+	size_t hi = size - 1;
 
-	if (size <= 1 || array == NULL)
-		return;
-	while (1)
-	{
-		for (i = 0; i < size - 1; i++)
-			if (array[i] > array[i + 1])
-				break;
-		if (i == size - 1)
-			break;
+	printf("helper-QS: hi: %lu\n", hi);
+	qs_recurse(array, 0, hi, size, "BEGIN");
+}
 
-		pivot = array[size - 1];
-		right = array[size - 2];
+/**
+ * qs_recurse - recursive implementation of QuickSort algo using Lomuto
+ *              partition scheme
+ *
+ *
+ **/
+void qs_recurse(int *array, int lo, int hi, size_t size, char *indi)
+{
+	size_t p;
 
-		for (i = 0; i < size; i++)
-		{
-			left = array[i];
-			if (left >= pivot || left == right)
-				break;
-		}
-
-		for (j = size - 2; j > 0; j--)
-		{
-			right = array[j];
-			if (right < pivot || right == left)
-				break;
-		}
-
-		if (i == j)
-		{
-			array[i] = pivot;
-			array[size - 1] = left;
-		}
+	if (lo < hi)
+		p = partition(array, lo, hi, size, "L");
+		if (!(p < 0 && lo == 0 && hi == (size - 1)))
+			qs_recurse(array, lo, p - 1, size, "--------");
 		else
-		{
-			array[i] = right;
-			array[j] = left;
-		}
+			exit;
+		// qs_recurse(array, p + 1, hi, size);
+		// print_array(array, size);
+}
+/**
+ * partition - using value of pivot, divide array into values less than pivot
+ *             and values greater than pivot
+ * @lo: index to low end of the partition to be sorted into two groups
+ * @hi: index of high end of partition to be sorted into two groups
+ * Return: index of the divider between values less than and greater than the
+ *         value of the pivot
+ **/
+size_t partition(int *array, int lo, int hi, size_t size, char *indi)
+{
+	int pivot = array[hi];
+	int i = lo - 1;
+	int j;
 
-		print_array(array, size);
+	pivot = pivot; /* to avoid unused var warning ... */
+	for (j = lo; j < hi; j++)
+	{
+		if (array[j] <= pivot)
+		{
+			i++;
+			swap(array, i, j);
+		}
 	}
+	if (array[hi] < array[i + 1])
+		swap(array, i + 1, hi);
+	print_array(array, size);
+	/* printf("lo:%d, hi:%d\n", lo, hi); */
+	printf("%spivot:%d lo:%d hi:%d\n\n",indi, i+1, lo, hi);
+	if (i > 0 && lo == 0 && hi == (int)size -1 )
+		exit(666);
+    return (i + 1);
+}
+
+/**
+ * swap - swaps to elements of an array of ints
+ * @array: array of ints
+ * @x: index of one element to be swapped
+ * @y: index of the other element to be swapped
+ **/
+void swap(int *array, size_t x, size_t y)
+{
+	int tmp;
+
+	tmp = array[x];
+	array[x] = array[y];
+	array[y] = tmp;
 }
