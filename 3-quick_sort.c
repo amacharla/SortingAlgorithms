@@ -38,7 +38,6 @@ int partition(int *array, size_t size, int start, int end)
 			tmp = array[i];
 			array[i] = array[pidx];
 			array[pidx] = tmp;
-			print_array(array, size);
 
 			pidx += 1; /* increment comprasion marker --> */
 		}
