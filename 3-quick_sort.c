@@ -1,6 +1,6 @@
 #include "sort.h"
 
-int partition(int *array, size_t size, int start, int end);
+int partition(int *array, int start, int end);
 void myQuickSort(int *array, size_t size, int start, int end);
 
 void quick_sort(int *array, size_t size)
@@ -17,14 +17,15 @@ void myQuickSort(int *array, size_t size, int start, int end)
 		return;
 
 	/* -smaller values- | PIDX | -larger values- */
-	pidx = partition(array, size, start, end);
+	pidx = partition(array, start, end);
+	print_array(array, size);
 
 	/* Recursively sort */
 	myQuickSort(array, size, start, pidx - 1); /* sort left side of set */
 	myQuickSort(array, size, pidx + 1, end); /* sort right side of set */
 }
 
-int partition(int *array, size_t size, int start, int end)
+int partition(int *array, int start, int end)
 {
 	int pivot, pidx, tmp, i;
 
@@ -46,7 +47,6 @@ int partition(int *array, size_t size, int start, int end)
 	tmp = array[pidx];
 	array[pidx] = array[end];
 	array[end] = tmp;
-	print_array(array, size);
 
 	return (pidx); /* return divide point of semi sorted array */
 }
