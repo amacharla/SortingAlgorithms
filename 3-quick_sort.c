@@ -7,6 +7,8 @@
  **/
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size < 2)
+		return;
 	/* use coustom function to make recursion easier */
 	quick_sort_recurse(array, size, 0, size - 1);
 }
@@ -64,9 +66,7 @@ int partition(int *array, size_t size, int start, int end)
 		}
 	}
 	if (modified)
-	{
 		print_array(array, size); /* print if change occured */
-	}
 
 	/* put the pivot value at its rightful place */
 	if (array[end] < array[pidx + 1])
