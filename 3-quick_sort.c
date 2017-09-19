@@ -1,56 +1,53 @@
 #include "sort.h"
 
+int partition(int *array, size_t size, int start, int end);
+void myQuickSort(int *array, size_t size, int start, int end);
+
 void quick_sort(int *array, size_t size)
 {
-	unsigned int i, j;
-	int pivot, left, right, sorted = 1;
+	/* use coustom function to make recursion easier */
+	myQuickSort(array, size, 0, size - 1);
+}
 
-	if (size <= 1 || array == NULL)
+void myQuickSort(int *array, size_t size, int start, int end)
+{
+	int pidx;
+
+	if (start >= end)
 		return;
-	while (1)
-	{ /* Sorted Check */
-		for (i = 0; i < size - 1; i++)
-		{	/* if unsorted */
-			if (array[i] > array[i + 1])
-			{
-				sorted = 0;
-				break;
-			}
+
+	/* -smaller values- | PIDX | -larger values- */
+	pidx = partition(array, size, start, end);
+
+	/* Recursively sort */
+	myQuickSort(array, size, start, pidx - 1); /* sort left side of set */
+	myQuickSort(array, size, pidx + 1, end); /* sort right side of set */
+}
+
+int partition(int *array, size_t size, int start, int end)
+{
+	int pivot, pidx, tmp, i;
+
+	pivot = array[end]; /* set last value as pivot */
+	pidx = start; /* start from left --> right and compare */
+
+	for (i = start; i < end; i++) /* go through the set */
+	{
+		if (array[i] <= pivot) /* value < = pivot value */
+		{ 	/* SWAP: put smaller values first */
+			tmp = array[i];
+			array[i] = array[pidx];
+			array[pidx] = tmp;
+			print_array(array, size);
+
+			pidx += 1; /* increment comprasion marker --> */
 		}
+	}
+	/* put the pivot value at its rightful place */
+	tmp = array[pidx];
+	array[pidx] = array[end];
+	array[end] = tmp;
+	print_array(array, size);
 
-		if (sorted) /* quit loop if sorted */
-			break;
-
-		/* set pivot and right marker */
-		pivot = array[size - 1]; /* always last element */
-		right = array[size - 2]; /* second to last element */
-
-		for (i = 0; i < size; i++) /* left marker compare with pivot */
-		{
-			left = array[i];
-			if (left >= pivot || left == right)
-				break;
-		} /* increment left marker --> */
-
-		for (j = size - 2; j > 0 && i != j; j--) /* right marker compare with pivot */
-		{
-			right = array[j];
-			if (right < pivot)
-				break;
-		} /* decrement right marker <-- */
-
-		if (i == j) /* left marker == right marker */
-		{ /* swap marker with pivot */
-			array[i] = pivot;
-			array[size - 1] = left;
-		}
-		else /* swap left and right marker */
-		{
-			array[i] = right;
-			array[j] = left;
-		}
-
-		print_array(array, size);
-
-	} /* go through array again */
+	return (pidx); /* return divide point of semi sorted array */
 }
