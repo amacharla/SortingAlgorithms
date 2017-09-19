@@ -1,4 +1,0 @@
-O(n^2)
-... this is tricky - half of the time, the inner loop runs at O(log(n))
-... the other half it runs at O(n)
-... I use the worst case part of the inner loop to derive my answer.
