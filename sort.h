@@ -3,6 +3,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
+#define TRUE 1
+#define FALSE 0
+
 /**
  * struct listint_s - Doubly linked list node
  * @n: Integer stored in the node
@@ -27,7 +31,7 @@ void quick_sort(int *array, size_t size);
 /* quick_sort.c functions */
 void quick_sort(int *array, size_t size);
 void qs_recurse(int *array, int lo, int hi, size_t size, char *indi);
-size_t partition(int *array, int lo, int hi, size_t size, char *indi);
 void swap(int *array, size_t x, size_t y);
-
+int partition(int *array, size_t size, int start, int end);
+void quick_sort_recurse(int *array, size_t size, int start, int end);
 #endif /*__sort_h_*/
