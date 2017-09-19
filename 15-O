@@ -1,9 +1,0 @@
-O(1)
-O(n)
-O(n)
-O(n)
-O(1)
-... This problem is goofy, n = the index where we remove/insert/etc, but
-... most of these don't specify the size of the array, which I think is more
-... relevant to the time complexity.  Worst case insert, removal search are
-... all proportional to the size of the array
