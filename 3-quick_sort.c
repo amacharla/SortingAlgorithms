@@ -1,56 +1,80 @@
 #include "sort.h"
 
+/**
+ * quick_sort - wrapper function to call recursive quick sort func
+ * @array: array of ints
+ * @size: size of array
+ **/
 void quick_sort(int *array, size_t size)
 {
-	unsigned int i, j;
-	int pivot, left, right, sorted = 1;
+	/* use coustom function to make recursion easier */
+	quick_sort_recurse(array, size, 0, size - 1);
+}
 
-	if (size <= 1 || array == NULL)
+/**
+ * quick_sort_recurse - uses quick sort algorithm to sort array of integers
+ * @array: array of ints
+ * @size: size of array
+ * @start: low index of sub-array
+ * @end: high index of sub-array
+ **/
+void quick_sort_recurse(int *array, size_t size, int start, int end)
+{
+	int pidx;
+
+	if (start >= end)
 		return;
-	while (1)
-	{ /* Sorted Check */
-		for (i = 0; i < size - 1; i++)
-		{	/* if unsorted */
-			if (array[i] > array[i + 1])
+
+	/* -smaller values- | PIDX | -larger values- */
+	pidx = partition(array, size, start, end);
+
+	/* Recursively sort */
+	quick_sort_recurse(array, size, start, pidx - 1); /* sort left side */
+	quick_sort_recurse(array, size, pidx + 1, end); /* sort right side of set */
+}
+
+/**
+ * partition - segregates values to either side of pivot: lower values to left
+ *              greater values to the right
+ * @array: array of ints
+ * @size: size of array
+ * @start: low index of sub-array
+ * @end: upper bound index of sub-array
+ * Return: updated array index of pivot
+ **/
+int partition(int *array, size_t size, int start, int end)
+{
+	int pivot, pidx, tmp, i, modified = FALSE;
+
+	pivot = array[end]; /* set last value as pivot */
+	pidx = start - 1; /* start from left --> right and compare */
+
+	for (i = start; i < end; i++) /* go through the set */
+	{
+		if (array[i] < pivot)
+		{  /* SWAP: put smaller values first */
+			pidx += 1;
+			if (i != pidx)
 			{
-				sorted = 0;
-				break;
+				modified = TRUE;
+				tmp = array[i];
+				array[i] = array[pidx];
+				array[pidx] = tmp;
 			}
 		}
+	}
+	if (modified)
+	{
+		print_array(array, size); /* print if change occured */
+	}
 
-		if (sorted) /* quit loop if sorted */
-			break;
-
-		/* set pivot and right marker */
-		pivot = array[size - 1]; /* always last element */
-		right = array[size - 2]; /* second to last element */
-
-		for (i = 0; i < size; i++) /* left marker compare with pivot */
-		{
-			left = array[i];
-			if (left >= pivot || left == right)
-				break;
-		} /* increment left marker --> */
-
-		for (j = size - 2; j > 0 && i != j; j--) /* right marker compare with pivot */
-		{
-			right = array[j];
-			if (right < pivot)
-				break;
-		} /* decrement right marker <-- */
-
-		if (i == j) /* left marker == right marker */
-		{ /* swap marker with pivot */
-			array[i] = pivot;
-			array[size - 1] = left;
-		}
-		else /* swap left and right marker */
-		{
-			array[i] = right;
-			array[j] = left;
-		}
-
+	/* put the pivot value at its rightful place */
+	if (array[end] < array[pidx + 1])
+	{
+		tmp = array[pidx + 1];
+		array[pidx + 1] = array[end];
+		array[end] = tmp;
 		print_array(array, size);
-
-	} /* go through array again */
+	}
+	return (pidx + 1); /* return divide point of semi sorted array */
 }
