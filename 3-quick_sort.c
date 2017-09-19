@@ -10,7 +10,7 @@ void quick_sort(int *array, size_t size)
 {
 	size_t hi = size - 1;
 
-	printf("helper-QS: hi: %lu\n", hi);
+	// printf("helper-QS: hi: %lu\n", hi);
 	qs_recurse(array, 0, hi, size, "BEGIN");
 }
 
@@ -25,13 +25,13 @@ void qs_recurse(int *array, int lo, int hi, size_t size, char *indi)
 	size_t p;
 
 	if (lo < hi)
-		p = partition(array, lo, hi, size, "L");
-		if (!(p < 0 && lo == 0 && hi == (size - 1)))
-			qs_recurse(array, lo, p - 1, size, "--------");
-		else
-			exit;
-		// qs_recurse(array, p + 1, hi, size);
+	{
+		p = partition(array, lo, hi, size, "");
+		printf("%spivot:%lu lo:%d hi:%d\n\n",indi, p, lo, hi);
+		qs_recurse(array, lo, p - 1, size, "--------");
+		qs_recurse(array, p + 1, hi, size, "++++++");
 		// print_array(array, size);
+	}
 }
 /**
  * partition - using value of pivot, divide array into values less than pivot
@@ -57,12 +57,15 @@ size_t partition(int *array, int lo, int hi, size_t size, char *indi)
 		}
 	}
 	if (array[hi] < array[i + 1])
+	{
+		i++;
 		swap(array, i + 1, hi);
+	}
 	print_array(array, size);
 	/* printf("lo:%d, hi:%d\n", lo, hi); */
-	printf("%spivot:%d lo:%d hi:%d\n\n",indi, i+1, lo, hi);
-	if (i > 0 && lo == 0 && hi == (int)size -1 )
-		exit(666);
+	// printf("%spivot:%d lo:%d hi:%d\n\n",indi, i+1, lo, hi);
+	// if (i > 0 && lo == 0 && hi == (int)size -1 )
+		// exit(666);
     return (i + 1);
 }
 
