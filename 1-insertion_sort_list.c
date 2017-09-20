@@ -81,6 +81,7 @@ void insertion_sort_list(listint_t **list)
 				if (past_node->n < node_swap->n)
 				{ /* insert at node at sorted location */
 					insert_node(past_node, node_swap);
+					print_list(*list);
 					break;
 				}
 			}

@@ -26,13 +26,11 @@ void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
-void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 
 /* quick_sort.c functions */
-void quick_sort(int *array, size_t size);
-void qs_recurse(int *array, int lo, int hi, size_t size, char *indi);
-void swap(int *array, size_t x, size_t y);
 int partition(int *array, size_t size, int start, int end);
 void quick_sort_recurse(int *array, size_t size, int start, int end);
+void quick_sort(int *array, size_t size);
 #endif /*__sort_h_*/
