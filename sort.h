@@ -29,10 +29,13 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 
-/* quick_sort.c functions */
-void quick_sort(int *array, size_t size);
+/* quick_sort.c  helper functions */
 void qs_recurse(int *array, int lo, int hi, size_t size, char *indi);
 void swap(int *array, size_t x, size_t y);
 int partition(int *array, size_t size, int start, int end);
 void quick_sort_recurse(int *array, size_t size, int start, int end);
+
+/* insertion_sort.c helper functions */
+void swap_adjacent(listint_t **head, listint_t *before, listint_t *after);
+
 #endif /*__sort_h_*/
