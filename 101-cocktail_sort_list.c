@@ -33,6 +33,9 @@ void cocktail_sort_list(listint_t **list)
 	int unsorted = 1;
 	listint_t *current, *start, *end;
 
+	if (list == NULL || *list == NULL)
+		return;
+
 	current = *list;
 	start = *list, end = NULL;
 
