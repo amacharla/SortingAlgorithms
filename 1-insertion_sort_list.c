@@ -41,6 +41,7 @@ void insert_head(listint_t **list, listint_t *new_head)
 
 /**
  * swap_adjacent - swap adjacent nodes
+ * @head: pointer to head node
  * @before: pointer to node that is before after
  * @after: pointer to node that after before
  **/
