@@ -11,7 +11,7 @@ void merge_sort(int *array, size_t size)
 
 	tmp = malloc(sizeof(int) * size);
 	merge_recurse(array, 0, size -1, tmp);
-	free(tmp_array);
+	free(tmp);
 }
 
 /**
@@ -23,15 +23,70 @@ void merge_sort(int *array, size_t size)
  **/
 void merge_recurse(int *array, size_t lo, size_t hi, int *tmp)
 {
+	size_t mid;
+
 	if (lo < hi)
 	{
 		mid = (lo + hi) / 2;
-		merge_recurse(array, lo, mid);
-		merge_recurse(array, mid + 1, hi);
+		merge_recurse(array, lo, mid, tmp);
+		merge_recurse(array, mid + 1, hi, tmp);
 		merge(array, lo, mid, hi, tmp);
 	}
 }
 
+/**
+ * pre_print - print state of both subarrays before merge
+ * @lo: index of start of low subarray
+ * @mid: index of end of low subarray
+ * @hi: index of upper bound of upper subarray
+ **/
+void pre_print(int *array, size_t lo, size_t mid, size_t hi)
+{
+	size_t i;
+	int comma = FALSE;
+
+	printf("Merging...\n");
+	printf("[left]");
+	
+	for (i = lo; i <= mid; i++)
+	{
+		if (comma)
+			putchar(',');
+		comma = TRUE;
+		printf(" %d", array[i]);
+	}
+	comma = FALSE;
+	printf("\n[right]");
+	for (i = mid + 1; i <= hi; i++)
+	{
+		if (comma)
+			putchar(',');
+		comma = TRUE;
+		printf(" %d", array[i]);
+	}
+	putchar('\n');
+}
+
+/**
+ * post_print - print state of array after merge
+ * @lo: index of start of merged subarray
+ * @hi: index of end of merged subarray
+ **/
+void post_print(int *array, size_t lo, size_t hi)
+{
+	size_t i;
+	int comma = FALSE;
+
+	printf("[Done]");
+	for (i = lo; i <= hi; i++)
+	{
+		if (comma)
+			putchar(',');
+		comma = TRUE;
+		printf(" %d", array[i]);
+	}
+	putchar('\n');
+}
 /**
  * merge - take two sorted subarrays and merge them into one sorted array
  * @array: array of ints
@@ -40,21 +95,26 @@ void merge_recurse(int *array, size_t lo, size_t hi, int *tmp)
  * @hi: index of upper bound of 2nd subarray
  * @tmp: staging area used for merging subarrays
  **/
-void merge(int *array, size_t lo, size_t mid, size_t hi)
+void merge(int *array, size_t lo, size_t mid, size_t hi, int *tmp)
 {
-	int *tmp_array;
-	size_t i, lo_size, hi_size, offset = lo;
+	size_t i, lodex = lo, hidex = mid + 1;
 
-	tmp_array = malloc(sizeof(int) * (hi - lo + 1))
-	if (tmp_array == NULL)
+	for (i = lo; i <= hi; i++) /* update subsection of tmp array */
+		tmp[i] = array[i];
+	
+	pre_print(array, lo, mid, hi);
+	for (i = lo; i <= hi; i++)
 	{
-		printf("OMG - malloc fail!!!");
-		exit(666);
+		if (tmp[lodex] < tmp[hidex])
+		{
+			array[i] = tmp[lodex];
+			lodex++;
+		}
+		else
+		{
+			array[i] = tmp[hidex];
+			hidex++;
+		}
 	}
-	lo_size = mid - lo + 1;
-	hi_size = hi - mid;
-	/* copy whole subarray to tmp array */
-	for (i = 0; i <= hi: i++)
-		tmp_array[i] = array[i + offset];
-	for (i =
+	post_print(array, lo, hi);
 }
